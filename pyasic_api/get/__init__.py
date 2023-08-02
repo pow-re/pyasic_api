@@ -48,6 +48,21 @@ async def get_config(ip):
     data = await miner.get_config()
     return data.as_dict()
 
+async def get_data(miner: AnyMiner) -> dict:
+    return (await miner.get_data()).asdict()
+
+async def get_config(miner: AnyMiner) -> dict:
+    return (await miner.get_config()).as_dict()
+
+@router.get(
+    "/{ip}/get_all/", summary="Get all data from one miner"
+)
+async def get_all_data(ip):
+    miner = await get_miner(ip)
+
+    results = await asyncio.gather(get_data(miner), miner.api.pools(), get_config(miner))
+
+    return results
 
 hashrate_resp = {
     200: {

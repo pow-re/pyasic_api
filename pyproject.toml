@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pyasic = "^0.33.23"
+pyasic = "^0.37.4"
 fastapi = {version = "^0.95.1"}
 uvicorn = "^0.21.1"
 

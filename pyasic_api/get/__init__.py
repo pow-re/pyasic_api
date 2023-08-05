@@ -2,7 +2,9 @@ from enum import Enum
 
 from fastapi import APIRouter, HTTPException
 
-from pyasic import MinerData, get_miner
+from pyasic import MinerData, AnyMiner, get_miner
+
+import asyncio
 
 
 class LEDMode(str, Enum):

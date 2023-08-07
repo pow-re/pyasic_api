@@ -64,7 +64,12 @@ async def get_all_data(ip):
 
     results = await asyncio.gather(get_data(miner), miner.api.pools(), get_config(miner))
 
-    return results
+    data = {}
+    data["data"] = results[0]
+    data["pools"] = results[1]
+    data["config"] = results[2]
+    
+    return data
 
 hashrate_resp = {
     200: {
